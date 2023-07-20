@@ -5,6 +5,7 @@
 
 let firstCard = 7;
 let secondCard = 10;
+let cards = [firstCard,secondCard]; //javascript array
 let hasBlackJack = false; //to check if the player won any blackjack
 let isAlive = true; //to check if the player is alive
 
@@ -27,7 +28,12 @@ let cardsEl = document.querySelector("#cards-el");
 console.log(cardsEl);
 
 function renderGame(){
-    cardsEl.textContent="Cards: "+firstCard+" "+secondCard;
+    cardsEl.textContent="Cards: ";
+
+    //create a for loop that renders out all the cards instead of just two
+    for(let i = 0; i<cards.length;i++){
+        cardsEl.textContent+= cards[i]+" ";
+    }
 
     if(sum<21){
         message="Do you want to draw a next card? 🙂";
@@ -53,6 +59,11 @@ function newCard(){
     console.log("Drawing new card from the deck!");
     //create a card variable and hard code it its value to a number between 2-11
     let card = 8;
+
+    //pushing the new card into the cards array
+    cards.push(card);
+    console.log(cards);
+    
     //add the card to the sum variable 
     sum+=card;
     //call start game
