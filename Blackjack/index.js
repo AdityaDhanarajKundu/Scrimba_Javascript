@@ -29,8 +29,18 @@ console.log(cardsEl);
 
 //create a function, getRandomCard(), that always returns random number between 1 and 13
 function getRandomCard(){
+    //if 1 -> return 11
+    //if 11-13 -> return 10
     let randomNumber = Math.floor(Math.random()*(13-1+1))+1;
-    return randomNumber;
+    if (randomNumber>10){
+        return 10;
+    }
+    else if(randomNumber===1){
+        return 11;
+    }
+    else{
+        return randomNumber;
+    }
 }
 
 function renderGame(){
