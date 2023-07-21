@@ -3,8 +3,8 @@
 
 // 2. Create a variable, sum, and set it to the sum of the two cards
 
-let firstCard = 7;
-let secondCard = 10;
+let firstCard = getRandomCard();
+let secondCard = getRandomCard();
 let cards = [firstCard,secondCard]; //javascript array
 let hasBlackJack = false; //to check if the player won any blackjack
 let isAlive = true; //to check if the player is alive
@@ -26,6 +26,12 @@ console.log(sumEl);
 
 let cardsEl = document.querySelector("#cards-el");
 console.log(cardsEl);
+
+//create a function, getRandomCard(), that always returns random number between 1 and 13
+function getRandomCard(){
+    let randomNumber = Math.floor(Math.random()*(13-1+1))+1;
+    return randomNumber;
+}
 
 function renderGame(){
     cardsEl.textContent="Cards: ";
@@ -58,7 +64,7 @@ function startGame(){
 function newCard(){
     console.log("Drawing new card from the deck!");
     //create a card variable and hard code it its value to a number between 2-11
-    let card = 8;
+    let card = getRandomCard();
 
     //pushing the new card into the cards array
     cards.push(card);
