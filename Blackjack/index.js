@@ -1,20 +1,14 @@
-// 1. Create two variables, firstCard and secondCard. 
-// Set their values to a random number between 2-11
 
-// 2. Create a variable, sum, and set it to the sum of the two cards
-
-let firstCard = getRandomCard();
-let secondCard = getRandomCard();
-let cards = [firstCard,secondCard]; //javascript array
+let cards = []; //javascript array
 let hasBlackJack = false; //to check if the player won any blackjack
-let isAlive = true; //to check if the player is alive
+let isAlive = false; //to check if the player is alive
 
 //declare a variable called message and assign its value to an empty string
 let message = "";
 
 //reassign the message variable to the string we're logging out 
 
-let sum = firstCard+secondCard;
+let sum = 0;
 
 console.log(sum);
 
@@ -68,21 +62,31 @@ function renderGame(){
 }
 
 function startGame(){
+    isAlive = true;
+    // Generate two random numbes
+    // Re-assign the cards and sum variables so that the game can start
+    let firstCard = getRandomCard();
+    let secondCard = getRandomCard();
+    cards=[firstCard,secondCard];
+    sum=firstCard+secondCard;
     renderGame();
 }
 
 function newCard(){
-    console.log("Drawing new card from the deck!");
-    //create a card variable and hard code it its value to a number between 2-11
-    let card = getRandomCard();
+    //only allow the players to select a new card when isAlive is true and hasBlackjack is false
+    if(isAlive===true && hasBlackJack===false){
+        console.log("Drawing new card from the deck!");
+        //create a card variable and hard code it its value to a number between 2-11
+        let card = getRandomCard();
 
-    //pushing the new card into the cards array
-    cards.push(card);
-    console.log(cards);
-    
-    //add the card to the sum variable 
-    sum+=card;
-    //call start game
-    renderGame();
+        //pushing the new card into the cards array
+        cards.push(card);
+        console.log(cards);
+        
+        //add the card to the sum variable 
+        sum+=card;
+        //call start game
+        renderGame();
+    }
 }
 
