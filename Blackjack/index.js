@@ -21,6 +21,12 @@ console.log(sumEl);
 let cardsEl = document.querySelector("#cards-el");
 console.log(cardsEl);
 
+let playerName = "Adi";
+let playerChips = 2000;
+let playerEl = document.getElementById("player-el");
+
+playerEl.textContent= playerName + ": Rs."+playerChips;
+
 //create a function, getRandomCard(), that always returns random number between 1 and 13
 function getRandomCard(){
     //if 1 -> return 11
