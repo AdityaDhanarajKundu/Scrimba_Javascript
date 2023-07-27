@@ -9,10 +9,8 @@ const inputEl = document.getElementById("input-el");
 //log out the "Button Clicked" when the user clicks the button
 //Push the value "www.awesomelead.com" to the array when the button is clicked
 buttonEl.addEventListener("click", ()=>{
-    //printing the value of the input text field
-    console.log(inputEl.value);
-    console.log();
-    myLeads.push("www.awesomelead.com");
+    //pushing the value in the text field into the array
+    myLeads.push(inputEl.value);
     console.log(myLeads);
     alert("Lead added to the array");
 });
