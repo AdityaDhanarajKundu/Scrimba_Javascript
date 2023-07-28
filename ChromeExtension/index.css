@@ -29,3 +29,20 @@ button:hover{
     font-weight: bold;
     box-shadow: 5px 1px 8px #FF6A00;
 }
+
+/*Style the lists according to the provided design*/
+
+ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #5f9341;
+    font-weight: bolder;
+}
