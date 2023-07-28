@@ -18,9 +18,18 @@ buttonEl.addEventListener("click", ()=>{
 
 let listItems = "";
 
+//make the list items as the clikable anchor tags
 function renderLeads(){
     for(let i=0;i<myLeads.length;i++){
-        listItems+="<li>"+myLeads[i]+"</li>";
+        // listItems+="<li> <a href ='"+myLeads[i]+"' target='_blank'>"+myLeads[i]+"</a></li>";
+
+        //doing just the same above thing but using the template string which is way more convinient way of doing this particular things
+
+        listItems += `
+            <li>
+                <a href='${myLeads[i]}' target='_blank'>${myLeads[i]}</a>
+            </li>
+        `;
     }
     ulEl.innerHTML=listItems;
 }
