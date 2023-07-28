@@ -11,9 +11,9 @@ const ulEl = document.getElementById("ul-el");
 buttonEl.addEventListener("click", ()=>{
     //pushing the value in the text field into the array
     myLeads.push(inputEl.value);
-    renderLeads();
     //clearing the value of the textfield after the button is clicked
     inputEl.value="";
+    renderLeads();
 });
 
 let listItems = "";
