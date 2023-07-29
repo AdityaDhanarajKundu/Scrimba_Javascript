@@ -6,6 +6,9 @@ const buttonEl=document.getElementById("input-btn");
 let myLeads = [];
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("ul-el");
+
+localStorage.setItem("myLead","www.facebook.com");
+console.log(localStorage.getItem("myLead"));
 //log out the "Button Clicked" when the user clicks the button
 //Push the value "www.awesomelead.com" to the array when the button is clicked
 buttonEl.addEventListener("click", ()=>{
