@@ -9,6 +9,17 @@ const ulEl = document.getElementById("ul-el");
 
 localStorage.setItem("myLead","www.facebook.com");
 console.log(localStorage.getItem("myLead"));
+
+//Save a key value pair in the local storage and get the value and show it to the console
+localStorage.setItem("myName","AdityaKundu");
+let name = localStorage.getItem("myName");
+console.log(name);
+//clearing the localStorage
+localStorage.clear();
+console.log(localStorage.getItem("myName")); //this should actually display null in the browser console
+console.log(name); //but this should display the value as the value is stored into this name variable before clearing the local storage
+
+
 //log out the "Button Clicked" when the user clicks the button
 //Push the value "www.awesomelead.com" to the array when the button is clicked
 buttonEl.addEventListener("click", ()=>{
