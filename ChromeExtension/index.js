@@ -3,23 +3,14 @@ const buttonEl=document.getElementById("input-btn");
 // myLeads : should be assigned to an empty array
 // inputEl : should be assigned to the text input field
 
-let myLeads = `["www.awesomelead.com"]`;
-//1. Turn the myLeads string into an array
-console.log(typeof myLeads);
-myLeads=JSON.parse(myLeads);
-console.log(typeof myLeads);
-//2. Push a new value to the array
-myLeads.push("www.facebook.com");
-//3. Turn the array into a string again
-myLeads=JSON.stringify(myLeads);
-//4. Console.log the string using typeof to verify that it's a string
-console.log(typeof myLeads);
+let myLeads = [];
 
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("ul-el");
 
 localStorage.setItem("myLead","www.facebook.com");
 console.log(localStorage.getItem("myLead"));
+localStorage.clear(); //clearing the localStorage
 
 //Save a key value pair in the local storage and get the value and show it to the console
 localStorage.setItem("myName","AdityaKundu");
@@ -38,7 +29,13 @@ buttonEl.addEventListener("click", ()=>{
     myLeads.push(inputEl.value);
     //clearing the value of the textfield after the button is clicked
     inputEl.value="";
+    //save the myLeads array to localStorage
+    //PS: remember JSON.stringify()
+    localStorage.setItem("myLeads",JSON.stringify(myLeads));
     renderLeads();
+
+    //to verify that it works:
+    console.log(localStorage.getItem("myLeads"));
 });
 
 let listItems = "";
