@@ -8,22 +8,20 @@ let myLeads = [];
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("ul-el");
 
-localStorage.setItem("myLead","www.facebook.com");
-console.log(localStorage.getItem("myLead"));
-localStorage.clear(); //clearing the localStorage
+// localStorage.setItem("myLead","www.facebook.com");
+// console.log(localStorage.getItem("myLead"));
+// localStorage.clear(); //clearing the localStorage
 
-//Save a key value pair in the local storage and get the value and show it to the console
-localStorage.setItem("myName","AdityaKundu");
-let name = localStorage.getItem("myName");
-console.log(name);
-//clearing the localStorage
-localStorage.clear();
-console.log(localStorage.getItem("myName")); //this should actually display null in the browser console
-console.log(name); //but this should display the value as the value is stored into this name variable before clearing the local storage
+//["leads1","leads2"] or null
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
+//1. Check if leadsFromLocalStorage is truthy
+//2. If so, set myLeads to its value and call renderLeads()
+if(leadsFromLocalStorage){  //in the first time the leadsFromLocalStorage should give a falsy value and thats because it is empty
+    myLeads=leadsFromLocalStorage;
+    renderLeads();
+}
 
-//log out the "Button Clicked" when the user clicks the button
-//Push the value "www.awesomelead.com" to the array when the button is clicked
 buttonEl.addEventListener("click", ()=>{
     //pushing the value in the text field into the array
     myLeads.push(inputEl.value);
@@ -38,10 +36,10 @@ buttonEl.addEventListener("click", ()=>{
     console.log(localStorage.getItem("myLeads"));
 });
 
-let listItems = "";
-
 //make the list items as the clikable anchor tags
 function renderLeads(){
+    let listItems = "";
+    
     for(let i=0;i<myLeads.length;i++){
         // listItems+="<li> <a href ='"+myLeads[i]+"' target='_blank'>"+myLeads[i]+"</a></li>";
 
