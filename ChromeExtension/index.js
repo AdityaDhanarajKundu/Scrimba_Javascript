@@ -23,7 +23,25 @@ const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 //2. If so, set myLeads to its value and call renderLeads()
 if(leadsFromLocalStorage){  //in the first time the leadsFromLocalStorage should give a falsy value and thats because it is empty
     myLeads=leadsFromLocalStorage;
-    renderLeads();
+    renderLeads(myLeads);
+}
+
+//make the list items as the clikable anchor tags
+function renderLeads(leads){
+    let listItems = "";
+    
+    for(let i=0;i<leads.length;i++){
+        // listItems+="<li> <a href ='"+myLeads[i]+"' target='_blank'>"+myLeads[i]+"</a></li>";
+
+        //doing just the same above thing but using the template string which is way more convinient way of doing this particular things
+
+        listItems += `
+            <li>
+                <a href='${leads[i]}' target='_blank'>${leads[i]}</a>
+            </li>
+        `;
+    }
+    ulEl.innerHTML=listItems;
 }
 
 buttonEl.addEventListener("click", ()=>{
@@ -34,7 +52,7 @@ buttonEl.addEventListener("click", ()=>{
     //save the myLeads array to localStorage
     //PS: remember JSON.stringify()
     localStorage.setItem("myLeads",JSON.stringify(myLeads));
-    renderLeads();
+    renderLeads(myLeads);
 
     //to verify that it works:
     console.log(localStorage.getItem("myLeads"));
@@ -46,23 +64,5 @@ delEl.addEventListener("dblclick",()=>{
     console.log("Double Clicked");
     localStorage.clear();
     myLeads=[];
-    renderLeads();
+    renderLeads(myLeads);
 })
-
-//make the list items as the clikable anchor tags
-function renderLeads(){
-    let listItems = "";
-    
-    for(let i=0;i<myLeads.length;i++){
-        // listItems+="<li> <a href ='"+myLeads[i]+"' target='_blank'>"+myLeads[i]+"</a></li>";
-
-        //doing just the same above thing but using the template string which is way more convinient way of doing this particular things
-
-        listItems += `
-            <li>
-                <a href='${myLeads[i]}' target='_blank'>${myLeads[i]}</a>
-            </li>
-        `;
-    }
-    ulEl.innerHTML=listItems;
-}
