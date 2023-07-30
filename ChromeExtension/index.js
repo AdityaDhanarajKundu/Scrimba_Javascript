@@ -6,6 +6,7 @@ const buttonEl=document.getElementById("input-btn");
 //Store the delete button in a variable
 const delEl = document.getElementById("delete-btn");
 
+const saveBtn = document.getElementById("save-btn");
 
 let myLeads = [];
 
@@ -25,6 +26,13 @@ if(leadsFromLocalStorage){  //in the first time the leadsFromLocalStorage should
     myLeads=leadsFromLocalStorage;
     render(myLeads);
 }
+
+const tabs = [{url: "https://www.linkedin.com/in/aditya-kundu-476485222/"}];
+
+//listen for clicks in saveBtn and log the url to the console
+saveBtn.addEventListener("click",()=>{
+    console.log(tabs[0].url);
+});
 
 //make the list items as the clikable anchor tags
 function render(leads){
