@@ -23,11 +23,11 @@ const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 //2. If so, set myLeads to its value and call renderLeads()
 if(leadsFromLocalStorage){  //in the first time the leadsFromLocalStorage should give a falsy value and thats because it is empty
     myLeads=leadsFromLocalStorage;
-    renderLeads(myLeads);
+    render(myLeads);
 }
 
 //make the list items as the clikable anchor tags
-function renderLeads(leads){
+function render(leads){
     let listItems = "";
     
     for(let i=0;i<leads.length;i++){
@@ -52,7 +52,7 @@ buttonEl.addEventListener("click", ()=>{
     //save the myLeads array to localStorage
     //PS: remember JSON.stringify()
     localStorage.setItem("myLeads",JSON.stringify(myLeads));
-    renderLeads(myLeads);
+    render(myLeads);
 
     //to verify that it works:
     console.log(localStorage.getItem("myLeads"));
@@ -64,5 +64,5 @@ delEl.addEventListener("dblclick",()=>{
     console.log("Double Clicked");
     localStorage.clear();
     myLeads=[];
-    renderLeads(myLeads);
+    render(myLeads);
 })
