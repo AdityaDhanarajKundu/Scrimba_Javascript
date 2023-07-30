@@ -29,9 +29,12 @@ if(leadsFromLocalStorage){  //in the first time the leadsFromLocalStorage should
 
 const tabs = [{url: "https://www.linkedin.com/in/aditya-kundu-476485222/"}];
 
-//listen for clicks in saveBtn and log the url to the console
+//save the url to the localStorage
 saveBtn.addEventListener("click",()=>{
-    console.log(tabs[0].url);
+    //pushing the url in the myLeads array
+    myLeads.push(tabs[0].url);
+    localStorage.setItem("myLeads",JSON.stringify(myLeads));
+    render(myLeads);
 });
 
 //make the list items as the clikable anchor tags
