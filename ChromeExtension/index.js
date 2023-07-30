@@ -3,6 +3,10 @@ const buttonEl=document.getElementById("input-btn");
 // myLeads : should be assigned to an empty array
 // inputEl : should be assigned to the text input field
 
+//Store the delete button in a variable
+const delEl = document.getElementById("delete-btn");
+
+
 let myLeads = [];
 
 const inputEl = document.getElementById("input-el");
@@ -13,7 +17,7 @@ const ulEl = document.getElementById("ul-el");
 // localStorage.clear(); //clearing the localStorage
 
 //["leads1","leads2"] or null
-let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
 //1. Check if leadsFromLocalStorage is truthy
 //2. If so, set myLeads to its value and call renderLeads()
@@ -35,6 +39,15 @@ buttonEl.addEventListener("click", ()=>{
     //to verify that it works:
     console.log(localStorage.getItem("myLeads"));
 });
+
+//listen for the doubleclicks on the delete button
+//When clicked clear localStorage myLeads and the DOM
+delEl.addEventListener("dblclick",()=>{
+    console.log("Double Clicked");
+    localStorage.clear();
+    myLeads=[];
+    renderLeads();
+})
 
 //make the list items as the clikable anchor tags
 function renderLeads(){
