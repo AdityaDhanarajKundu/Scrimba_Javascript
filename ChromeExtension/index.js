@@ -29,12 +29,14 @@ if(leadsFromLocalStorage){  //in the first time the leadsFromLocalStorage should
 
 const tabs = [{url: "https://www.linkedin.com/in/aditya-kundu-476485222/"}];
 
+//Getting the url of the current tab on the current window using the chrome API strictly for chrome extensions
 //save the url to the localStorage
 saveBtn.addEventListener("click",()=>{
-    //pushing the url in the myLeads array
-    myLeads.push(tabs[0].url);
-    localStorage.setItem("myLeads",JSON.stringify(myLeads));
-    render(myLeads);
+    chrome.tabs.query({active: true, currentWindow: true},(tabs)=>{
+        myLeads.push(tabs[0].url);
+        localStorage.setItem("myLeads",JSON.stringify(myLeads));
+        render(myLeads);
+    });
 });
 
 //make the list items as the clikable anchor tags
