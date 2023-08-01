@@ -1,23 +1,11 @@
 const buttonEl=document.getElementById("input-btn");
-//create two variable
-// myLeads : should be assigned to an empty array
-// inputEl : should be assigned to the text input field
-
-//Store the delete button in a variable
 const delEl = document.getElementById("delete-btn");
-
 const saveBtn = document.getElementById("save-btn");
-
-let myLeads = [];
-
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("ul-el");
 
-// localStorage.setItem("myLead","www.facebook.com");
-// console.log(localStorage.getItem("myLead"));
-// localStorage.clear(); //clearing the localStorage
 
-//["leads1","leads2"] or null
+let myLeads = [];
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
 //1. Check if leadsFromLocalStorage is truthy
@@ -26,8 +14,6 @@ if(leadsFromLocalStorage){  //in the first time the leadsFromLocalStorage should
     myLeads=leadsFromLocalStorage;
     render(myLeads);
 }
-
-const tabs = [{url: "https://www.linkedin.com/in/aditya-kundu-476485222/"}];
 
 //Getting the url of the current tab on the current window using the chrome API strictly for chrome extensions
 //save the url to the localStorage
