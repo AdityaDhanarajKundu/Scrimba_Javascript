@@ -32,6 +32,11 @@ function clearInput(){
     inputFieldEl.value = "";
 }
 
+function displayList(value){
+    ulistEl.innerHTML += `<li>${value}</li>`;
+    shoppingListEl.appendChild(ulistEl);
+}
+
 function addList(){
     const liEl = document.createElement("li");
     liEl.textContent = inputFieldEl.value;
@@ -43,4 +48,8 @@ onValue(shoppingListInDB,(snapshot)=>{
     console.log(snapshot.val());
     let itemsArray = Object.values(snapshot.val());
     console.log(itemsArray);
+    itemsArray.forEach(item=>{
+        console.log(item);
+        displayList(item);
+    })
 })
