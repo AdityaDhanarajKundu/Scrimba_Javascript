@@ -24,8 +24,17 @@ addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
     push(shoppingListInDB,inputValue);
     console.log(`${inputValue} is added to the database`);
+    addList();
+    clearInput();
+})
+
+function clearInput(){
+    inputFieldEl.value = "";
+}
+
+function addList(){
     const liEl = document.createElement("li");
-    liEl.textContent = inputValue;
+    liEl.textContent = inputFieldEl.value;
     ulistEl.appendChild(liEl);
     shoppingListEl.appendChild(ulistEl);
-})
+}
