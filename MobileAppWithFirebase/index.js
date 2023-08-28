@@ -33,27 +33,26 @@ function clearInput(){
 
 function displayList(value){
     ulistEl.innerHTML += `<li>${value}</li>`;
-    shoppingListEl.appendChild(ulistEl);
 }
 
-function addList(){
-    const liEl = document.createElement("li");
-    liEl.textContent = inputFieldEl.value;
-    ulistEl.appendChild(liEl);
-    shoppingListEl.appendChild(ulistEl);
-}
+// function addList(){
+//     const liEl = document.createElement("li");
+//     liEl.textContent = inputFieldEl.value;
+//     ulistEl.appendChild(liEl);
+//     shoppingListEl.appendChild(ulistEl);
+// }
 
 function clearShoppingListEl(){
-    shoppingListEl.innerHTML = "";
+    ulistEl.innerHTML = "";
 }
 
 onValue(shoppingListInDB,(snapshot)=>{
-    console.log(snapshot.val());
     let itemsArray = Object.values(snapshot.val());
     console.log(itemsArray);
     clearShoppingListEl(); //so that the newly inserted items are not repeated in the webpage
     itemsArray.forEach(item=>{
         console.log(item);
         displayList(item);
-    })
+    });
+    shoppingListEl.appendChild(ulistEl);
 })
