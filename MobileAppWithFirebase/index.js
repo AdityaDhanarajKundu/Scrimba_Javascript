@@ -43,11 +43,15 @@ function addList(){
     shoppingListEl.appendChild(ulistEl);
 }
 
+function clearShoppingListEl(){
+    shoppingListEl.innerHTML = "";
+}
+
 onValue(shoppingListInDB,(snapshot)=>{
     console.log(snapshot.val());
     let itemsArray = Object.values(snapshot.val());
     console.log(itemsArray);
-    shoppingListEl.innerHTML = ""; //so that the newly inserted items are not repeated in the webpage
+    clearShoppingListEl(); //so that the newly inserted items are not repeated in the webpage
     itemsArray.forEach(item=>{
         console.log(item);
         displayList(item);
