@@ -40,6 +40,16 @@ button {
     font-family: "Rubik",sans-serif;
 }
 
-li{
+ul{
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul li{
     color: black;
+    list-style: none;
+    background-color: #FFFDF8;
+    padding: 16px;
+    box-shadow: 0px 1px 4px rgba(0,0,0.2);
 }
