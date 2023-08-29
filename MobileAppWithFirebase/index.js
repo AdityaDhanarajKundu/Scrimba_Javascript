@@ -58,13 +58,20 @@ function clearShoppingListEl(){
 
 onValue(shoppingListInDB,(snapshot)=>{
 
-    let itemsArray = Object.entries(snapshot.val());
-    console.log(itemsArray);
-    clearShoppingListEl(); //so that the newly inserted items are not repeated in the webpage
-    for(let i=0; i<itemsArray.length;i++){
-        let currentItem = itemsArray[i];
-        //append to ul
-        displayList(currentItem);
+    //the list elements will only be displayed when there are items in the database
+    if(snapshot.exists()){
+        shoppingListEl.textContent = "";
+        let itemsArray = Object.entries(snapshot.val());
+        console.log(itemsArray);
+        clearShoppingListEl(); //so that the newly inserted items are not repeated in the webpage
+        for(let i=0; i<itemsArray.length;i++){
+            let currentItem = itemsArray[i];
+            //append to ul
+            displayList(currentItem);
+        }
+        shoppingListEl.appendChild(ulistEl);
     }
-    shoppingListEl.appendChild(ulistEl);
+    else{
+        shoppingListEl.textContent = "No items to display yet";
+    }
 })
